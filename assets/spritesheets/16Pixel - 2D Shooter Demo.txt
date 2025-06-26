@@ -2,7 +2,7 @@ Author: 16Pixel
 https://opengameart.org/users/16pixel
 
 URL:
-https://opengameart.org/users/16pixel
+https://opengameart.org/content/2d-platformer-shooter-asset-pack
 
 License: CC-BY-SA 4.0
 https://opengameart.org/sites/default/files/license_images/cc-by-sa_0.png
