@@ -5,6 +5,7 @@ var alive: bool = true
 var is_jumping: bool = false
 var speed_scale: float = 1
 signal dead
+signal score
 
 func scale_speed(speed: float):
 	speed_scale = speed
@@ -26,6 +27,13 @@ func _input(event: InputEvent) -> void:
 				sprite.animation = "jump_right"
 
 func _physics_process(delta: float) -> void:
+	var food_collided_with = get_colliding_bodies().filter(func (body: StaticBody2D): return body.name.begins_with("Food"))
+	var will_return = len(food_collided_with) == 1
+	while (len(food_collided_with) != 0):
+		food_collided_with.pop_front().queue_free()
+		emit_signal("score", 1)
+	if (will_return):
+		return
 	if (len(get_colliding_bodies()) != 0 and !sprite.is_playing()):
 		sprite.animation = "walk_right"
 		sprite.play()
