@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 var digit: AnimatedSprite2D
 var digits: Array = []
@@ -29,14 +29,16 @@ func set_number(given_number: int) -> void:
 	while (len(digits) < len(given_digits)):
 		var new_digit: AnimatedSprite2D = digits[len(digits) - 1].duplicate()
 		new_digit.position.x -= 90
+		position.x += 45
 		add_child(new_digit)
 		digits.append(new_digit)
 	while (len(digits) > len(given_digits)):
 		digits.pop_back().queue_free()
+		position.x -= 45
 	for i in range(0, len(digits)):
 		digits[i].animation = "%d" % given_digits[i]
 	
 func _enter_tree() -> void:
 	digit = find_child("Digit")
 	digits.append(digit)
-	set_number(number)\
+	set_number(number)

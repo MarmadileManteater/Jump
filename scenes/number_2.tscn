@@ -512,11 +512,24 @@ scale = Vector2(1, 2.48856)
 color = Color(0.117647, 0.454902, 0.447059, 1)
 polygon = PackedVector2Array(-502, 19.75, 649.25, 16.75, 651, 169.75, -502, 155.75)
 
-[node name="Score Card" type="Node2D" parent="."]
-position = Vector2(732, 72)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -110.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("14_587ap")
 
-[node name="Digit" type="AnimatedSprite2D" parent="Score Card"]
+[node name="Digit" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sfhw8")
 animation = &"0"
