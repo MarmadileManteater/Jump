@@ -245,7 +245,7 @@ position = Vector2(642.25, 181)
 texture = ExtResource("2_j1oyn")
 
 [node name="Player" type="RigidBody2D" parent="Parallax"]
-position = Vector2(54, 60.25)
+position = Vector2(110.25, 60.25)
 scale = Vector2(0.25, 0.25)
 lock_rotation = true
 contact_monitor = true
@@ -253,14 +253,14 @@ max_contacts_reported = 1
 script = ExtResource("9_y82r6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax/Player"]
-scale = Vector2(6, 6)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_0wx18")
 animation = &"walk_right"
 autoplay = "jump_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax/Player"]
 position = Vector2(-4.5, -8)
-scale = Vector2(6, 6)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_3u3qx")
 
 [node name="Buildings 1" type="Node2D" parent="Parallax"]
