@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 4.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3u3qx"]
@@ -253,21 +253,19 @@ max_contacts_reported = 1
 script = ExtResource("9_y82r6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax/Player"]
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_0wx18")
 animation = &"walk_right"
-autoplay = "walk_right"
-frame_progress = 0.332556
+autoplay = "jump_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax/Player"]
 position = Vector2(-4.5, -8)
-scale = Vector2(4, 4)
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_3u3qx")
 
 [node name="Buildings 1" type="Node2D" parent="Parallax"]
 script = ExtResource("5_glne5")
 speed = 30
-letters = ["A", "B", "C", "D"]
 right_end = 683.25
 
 [node name="Buildings D-1" type="Sprite2D" parent="Parallax/Buildings 1"]
@@ -283,7 +281,7 @@ position = Vector2(-254.75, 201)
 texture = ExtResource("1_4ujt7")
 
 [node name="Buildings A-1" type="Sprite2D" parent="Parallax/Buildings 1"]
-position = Vector2(-254.75, 128.75)
+position = Vector2(-254.75, 153.5)
 texture = ExtResource("1_4ujt7")
 
 [node name="Collision Body" type="StaticBody2D" parent="Parallax/Buildings 1/Buildings A-1"]
@@ -342,8 +340,12 @@ texture = ExtResource("1_4ujt7")
 position = Vector2(383.5, 201)
 texture = ExtResource("1_4ujt7")
 
+[node name="Buildings E1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(383.5, 175.5)
+texture = ExtResource("1_4ujt7")
+
 [node name="Buildings A1" type="Sprite2D" parent="Parallax/Buildings 1"]
-position = Vector2(383.5, 128.75)
+position = Vector2(383.5, 103.75)
 texture = ExtResource("1_4ujt7")
 
 [node name="Collision Body" type="StaticBody2D" parent="Parallax/Buildings 1/Buildings A1"]
@@ -378,5 +380,11 @@ texture = ExtResource("4_o1edr")
 [node name="MountainsD" type="Sprite2D" parent="Parallax/Mountains"]
 position = Vector2(590.75, 367.75)
 texture = ExtResource("4_o1edr")
+
+[node name="Polygon2D" type="Polygon2D" parent="Parallax/Mountains"]
+position = Vector2(18.25, 401.567)
+scale = Vector2(1, 2.48856)
+color = Color(0.117647, 0.454902, 0.447059, 1)
+polygon = PackedVector2Array(-502, 19.75, 649.25, 16.75, 651, 169.75, -502, 155.75)
 
 [connection signal="dead" from="Parallax/Player" to="Parallax" method="_on_player_dead"]

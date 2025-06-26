@@ -12,9 +12,9 @@ func _enter_tree() -> void:
 
 	for letter in letters:
 		for i in range(range_start, range_end):
-			print("Buildings %s%d" % [ letter, i ])
-			print(find_child("Buildings %s%d" % [ letter, i ]))
-			buildings.append(find_child("Buildings %s%d" % [ letter, i ]))
+			var building = find_child("Buildings %s%d" % [ letter, i ])
+			if (building != null):
+				buildings.append(building)
 
 func _physics_process(delta: float) -> void:
 	for building in buildings:
