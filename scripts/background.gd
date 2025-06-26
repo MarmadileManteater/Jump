@@ -24,6 +24,7 @@ func _enter_tree() -> void:
 	set_speed(1.5)
 	
 func set_speed(given_speed: float = 1) -> void:
+	var diff = given_speed - speed
 	speed = given_speed
 	sky.speed = speed * 2
 	trees.speed = speed * 10

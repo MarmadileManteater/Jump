@@ -11,5 +11,4 @@ func _enter_tree() -> void:
 	score = find_child("GUI").find_child("Score")
 
 func _on_progression_timer_timeout() -> void:
-	score.set_number(score.number + 1)
 	parallax.set_speed(parallax.speed + 0.1)
