@@ -1,0 +1,382 @@
+[gd_scene load_steps=27 format=3 uid="uid://cwpqloipw12mc"]
+
+[ext_resource type="Script" uid="uid://yftbga6pnld7" path="res://scripts/background.gd" id="1_0gq2e"]
+[ext_resource type="Texture2D" uid="uid://xjr5ob38f3nx" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/city/build1.png" id="1_4ujt7"]
+[ext_resource type="Texture2D" uid="uid://rehlyn0dwkp0" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/blue.png" id="1_ihjrc"]
+[ext_resource type="Texture2D" uid="uid://dj7s5el85ssmw" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/forest/threes_black.png" id="2_eh0x3"]
+[ext_resource type="Texture2D" uid="uid://ek3o4mdsdmyh" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/city/build2.png" id="2_j1oyn"]
+[ext_resource type="Script" uid="uid://cv4kvdq18avw7" path="res://scripts/sky.gd" id="3_5jjov"]
+[ext_resource type="Script" uid="uid://dnjjk14issmby" path="res://scripts/trees.gd" id="3_altxf"]
+[ext_resource type="Texture2D" uid="uid://cypcqj4fqn6ii" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/cloud.png" id="3_xusah"]
+[ext_resource type="Texture2D" uid="uid://cct6u775yil07" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/forest/mountain2_recolon1.png" id="4_o1edr"]
+[ext_resource type="Script" uid="uid://nnh3g6uhvgwp" path="res://scripts/buildings_2.gd" id="5_glne5"]
+[ext_resource type="Texture2D" uid="uid://glvylhgjehuf" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/player/player1/player.png" id="9_ctwnc"]
+[ext_resource type="Script" uid="uid://dawc7yl2n1d0c" path="res://scripts/player.gd" id="9_y82r6"]
+[ext_resource type="Script" uid="uid://wn8p7ejy3ic0" path="res://scripts/mountains.gd" id="10_iba6n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wx18"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(48, 480, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u3qx"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(96, 480, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aedlb"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(144, 480, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctwnc"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(48, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y82r6"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(96, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhegp"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(144, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_587ap"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(192, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cud2"]
+atlas = ExtResource("9_ctwnc")
+region = Rect2(240, 240, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wx18"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wx18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u3qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aedlb")
+}],
+"loop": false,
+"name": &"jump_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctwnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y82r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhegp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_587ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cud2")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u3qx"]
+size = Vector2(12.25, 19.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iba6n"]
+size = Vector2(71.5, 286.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctwnc"]
+size = Vector2(96, 323.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y82r6"]
+size = Vector2(72, 261)
+
+[node name="Root" type="Node2D"]
+texture_filter = 1
+
+[node name="Parallax" type="Node2D" parent="."]
+scale = Vector2(4, 4)
+script = ExtResource("1_0gq2e")
+
+[node name="Sky" type="Sprite2D" parent="Parallax"]
+position = Vector2(54, 116)
+scale = Vector2(3.1975, 3.0875)
+texture = ExtResource("1_ihjrc")
+script = ExtResource("3_5jjov")
+
+[node name="CloudA" type="Sprite2D" parent="Parallax/Sky"]
+position = Vector2(-78.7334, -22.1862)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xusah")
+
+[node name="CloudB" type="Sprite2D" parent="Parallax/Sky"]
+position = Vector2(13.2916, -31.5789)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xusah")
+
+[node name="CloudC" type="Sprite2D" parent="Parallax/Sky"]
+position = Vector2(112.666, -5.82996)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xusah")
+
+[node name="CloudD" type="Sprite2D" parent="Parallax/Sky"]
+position = Vector2(-29.0852, -5.4251)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xusah")
+
+[node name="CloudE" type="Sprite2D" parent="Parallax/Sky"]
+position = Vector2(58.6396, 10.2024)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xusah")
+
+[node name="Trees" type="Node2D" parent="Parallax"]
+position = Vector2(0.5, 0)
+script = ExtResource("3_altxf")
+
+[node name="TreesA" type="Sprite2D" parent="Parallax/Trees"]
+position = Vector2(-276, 249)
+texture = ExtResource("2_eh0x3")
+
+[node name="TreesB" type="Sprite2D" parent="Parallax/Trees"]
+position = Vector2(24, 249)
+texture = ExtResource("2_eh0x3")
+
+[node name="TreesC" type="Sprite2D" parent="Parallax/Trees"]
+position = Vector2(324, 249)
+texture = ExtResource("2_eh0x3")
+
+[node name="TreesD" type="Sprite2D" parent="Parallax/Trees"]
+position = Vector2(622.5, 247.5)
+texture = ExtResource("2_eh0x3")
+
+[node name="Backdrop" type="Polygon2D" parent="Parallax/Trees"]
+position = Vector2(94.25, 35.25)
+color = Color(0.262745, 0.14902, 0.321569, 1)
+polygon = PackedVector2Array(-524.75, 274.75, -525.5, 413, 681, 416.25, 674, 298)
+
+[node name="Buildings 2" type="Node2D" parent="Parallax"]
+position = Vector2(2, 0)
+script = ExtResource("5_glne5")
+right_end = 940.0
+range_end = 3
+
+[node name="Buildings E-1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(-257.75, 344.75)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings E0" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(42.25, 344.75)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings E1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(342.25, 344.75)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings D-1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(-257.75, 320.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings D0" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(42.25, 320.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings D1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(342.25, 320.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings C-1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(-257.75, 273.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings C0" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(42.25, 273.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings C1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(342.25, 273.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings B-1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(-257.75, 227.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings B0" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(42.25, 227.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings B1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(342.25, 227.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings A-1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(-257.75, 181)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings A0" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(42.25, 181)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings A1" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(342.25, 181)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings E2" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(642.25, 344.75)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings D2" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(642.25, 320.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings C2" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(642.25, 273.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings B2" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(642.25, 227.5)
+texture = ExtResource("2_j1oyn")
+
+[node name="Buildings A2" type="Sprite2D" parent="Parallax/Buildings 2"]
+position = Vector2(642.25, 181)
+texture = ExtResource("2_j1oyn")
+
+[node name="Player" type="RigidBody2D" parent="Parallax"]
+position = Vector2(54, 60.25)
+scale = Vector2(0.25, 0.25)
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("9_y82r6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Parallax/Player"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0wx18")
+animation = &"walk_right"
+autoplay = "walk_right"
+frame_progress = 0.601065
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax/Player"]
+position = Vector2(-4.5, -8)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_3u3qx")
+
+[node name="Buildings 1" type="Node2D" parent="Parallax"]
+script = ExtResource("5_glne5")
+speed = 30
+letters = ["A", "B", "C", "D"]
+right_end = 683.25
+
+[node name="Buildings D-1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(-254.75, 344.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings C-1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(-254.75, 273)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings B-1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(-254.75, 201)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings A-1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(-254.75, 128.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Collision Body" type="StaticBody2D" parent="Parallax/Buildings 1/Buildings A-1"]
+
+[node name="Building X" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A-1/Collision Body"]
+position = Vector2(-102, 146.375)
+shape = SubResource("RectangleShape2D_iba6n")
+
+[node name="Building Y" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A-1/Collision Body"]
+position = Vector2(6, 139.875)
+shape = SubResource("RectangleShape2D_ctwnc")
+
+[node name="Building Z" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A-1/Collision Body"]
+position = Vector2(114, 156.5)
+shape = SubResource("RectangleShape2D_y82r6")
+
+[node name="Buildings D0" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(70.25, 344.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings C0" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(70.25, 273)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings B0" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(70.25, 201)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings A0" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(70.25, 128.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Collision Body" type="StaticBody2D" parent="Parallax/Buildings 1/Buildings A0"]
+
+[node name="Building X" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A0/Collision Body"]
+position = Vector2(-102, 146.375)
+shape = SubResource("RectangleShape2D_iba6n")
+
+[node name="Building Y" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A0/Collision Body"]
+position = Vector2(6, 139.875)
+shape = SubResource("RectangleShape2D_ctwnc")
+
+[node name="Building Z" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A0/Collision Body"]
+position = Vector2(114, 156.5)
+shape = SubResource("RectangleShape2D_y82r6")
+
+[node name="Buildings D1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(383.5, 344.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings C1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(383.5, 273)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings B1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(383.5, 201)
+texture = ExtResource("1_4ujt7")
+
+[node name="Buildings A1" type="Sprite2D" parent="Parallax/Buildings 1"]
+position = Vector2(383.5, 128.75)
+texture = ExtResource("1_4ujt7")
+
+[node name="Collision Body" type="StaticBody2D" parent="Parallax/Buildings 1/Buildings A1"]
+
+[node name="Building X" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A1/Collision Body"]
+position = Vector2(-102, 146.375)
+shape = SubResource("RectangleShape2D_iba6n")
+
+[node name="Building Y" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A1/Collision Body"]
+position = Vector2(6, 139.875)
+shape = SubResource("RectangleShape2D_ctwnc")
+
+[node name="Building Z" type="CollisionShape2D" parent="Parallax/Buildings 1/Buildings A1/Collision Body"]
+position = Vector2(114, 156.5)
+shape = SubResource("RectangleShape2D_y82r6")
+
+[node name="Mountains" type="Node2D" parent="Parallax"]
+script = ExtResource("10_iba6n")
+
+[node name="MountainsA" type="Sprite2D" parent="Parallax/Mountains"]
+position = Vector2(-285.75, 367.75)
+texture = ExtResource("4_o1edr")
+
+[node name="MountainsB" type="Sprite2D" parent="Parallax/Mountains"]
+position = Vector2(6.75, 367.75)
+texture = ExtResource("4_o1edr")
+
+[node name="MountainsC" type="Sprite2D" parent="Parallax/Mountains"]
+position = Vector2(298, 367.75)
+texture = ExtResource("4_o1edr")
+
+[node name="MountainsD" type="Sprite2D" parent="Parallax/Mountains"]
+position = Vector2(590.75, 367.75)
+texture = ExtResource("4_o1edr")
+
+[connection signal="dead" from="Parallax/Player" to="Parallax" method="_on_player_dead"]
