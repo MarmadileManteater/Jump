@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bw1a1im5pl53u"
+path="res://.godot/imported/spring.ogg-89146ff69ba63bbbcce998306a0a67ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/8-bit Platformer SFX/spring.ogg"
+dest_files=["res://.godot/imported/spring.ogg-89146ff69ba63bbbcce998306a0a67ef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

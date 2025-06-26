@@ -7,6 +7,7 @@ var food_sprites = ["apple", "pizza", "ice cream", "bread", "soda"]
 
 var parallax: Background
 var score: MultiDigitNumber
+var final_score_label: Control
 var food_spawners: Array = []
 var enemy_spawners: Array = []
 var foods: Array = []
@@ -17,10 +18,18 @@ var rotated_times = 0
 func _enter_tree() -> void:
 	parallax = find_child("Parallax")
 	score = find_child("GUI").find_child("Score")
+	final_score_label = find_child("GUI").find_child("Final Score Label")
 	food_spawners = find_children("FoodSpawner*")
 	enemy_spawners = find_children("EnemySpawner*")
 	food = find_child("Food")
 	enemy = find_child("Enemy")
+
+func _input(event: InputEvent) -> void:
+	if (final_score_label.visible):
+		if (event.is_action_pressed("ui_accept") 
+		or event is InputEventMouseButton
+		or event is InputEventScreenTouch):
+			get_tree().reload_current_scene()
 
 func _on_progression_timer_timeout() -> void:
 	if (parallax.player.alive):
@@ -56,4 +65,12 @@ func _on_buildings_1_full_rotation() -> void:
 			enemy_spawners_list[spawner_index].add_child(new_enemy)
 			new_enemy.visible = true
 			animation_player.play()
-	rotated_times    += 1
+	rotated_times += 1
+
+func _on_reset_timer_timeout() -> void:
+	score.anchor_left = 0.5
+	score.anchor_right = 0.5
+	score.anchor_bottom = 0.5
+	score.anchor_top = 0.5
+	score.position.y += 190
+	final_score_label.visible = true

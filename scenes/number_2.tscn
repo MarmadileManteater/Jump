@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cwpqloipw12mc"]
+[gd_scene load_steps=67 format=3 uid="uid://cwpqloipw12mc"]
 
 [ext_resource type="Script" uid="uid://yftbga6pnld7" path="res://scripts/background.gd" id="1_0gq2e"]
 [ext_resource type="Script" uid="uid://b2f5hxbvnooll" path="res://scripts/number_2.gd" id="1_2cud2"]
@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://glvylhgjehuf" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/player/player1/player.png" id="9_ctwnc"]
 [ext_resource type="Script" uid="uid://dawc7yl2n1d0c" path="res://scripts/player.gd" id="9_y82r6"]
 [ext_resource type="Script" uid="uid://wn8p7ejy3ic0" path="res://scripts/mountains.gd" id="10_iba6n"]
+[ext_resource type="AudioStream" uid="uid://cmm1y4nlw7s14" path="res://assets/sfx/8-bit Platformer SFX/jump.ogg" id="12_ksuq5"]
+[ext_resource type="AudioStream" uid="uid://bw1a1im5pl53u" path="res://assets/sfx/8-bit Platformer SFX/spring.ogg" id="13_sfhw8"]
 [ext_resource type="Script" uid="uid://bm16iipiogwxj" path="res://scripts/multi_digit_number.gd" id="14_587ap"]
+[ext_resource type="AudioStream" uid="uid://crocjs8jswdj3" path="res://assets/sfx/8-bit Platformer SFX/playerhurt.ogg" id="14_e7thi"]
 [ext_resource type="Texture2D" uid="uid://s2mvcqsi8bil" path="res://assets/spritesheets/BoxyBold - by Clint Bellanger/Repacked - double.png" id="14_lhegp"]
 [ext_resource type="Texture2D" uid="uid://co5xhg7bopv8t" path="res://assets/spritesheets/food_items16x16.png" id="15_0wx18"]
 [ext_resource type="Script" uid="uid://ce4v6nsupe1gb" path="res://scripts/enemy.gd" id="16_aedlb"]
@@ -397,6 +400,89 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e7thi"]
+texture = ExtResource("14_lhegp")
+texture_region_size = Vector2i(18, 16)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pl2e3"]
+sources/0 = SubResource("TileSetAtlasSource_e7thi")
+
 [node name="Root" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_2cud2")
@@ -404,6 +490,11 @@ script = ExtResource("1_2cud2")
 [node name="Parallax" type="Node2D" parent="."]
 scale = Vector2(4, 4)
 script = ExtResource("1_0gq2e")
+
+[node name="DeathSoundEffect" type="AudioStreamPlayer2D" parent="Parallax"]
+position = Vector2(110.25, 60.25)
+scale = Vector2(0.25, 0.25)
+stream = ExtResource("14_e7thi")
 
 [node name="Sky" type="Sprite2D" parent="Parallax"]
 position = Vector2(54, 116)
@@ -567,7 +658,14 @@ scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_3u3qx")
 
 [node name="DeathTimer" type="Timer" parent="Parallax/Player"]
+wait_time = 0.1
 one_shot = true
+
+[node name="JumpSoundEffect" type="AudioStreamPlayer2D" parent="Parallax/Player"]
+stream = ExtResource("12_ksuq5")
+
+[node name="FoodSoundEffect" type="AudioStreamPlayer2D" parent="Parallax/Player"]
+stream = ExtResource("13_sfhw8")
 
 [node name="Buildings 1" type="Node2D" parent="Parallax"]
 script = ExtResource("5_glne5")
@@ -720,6 +818,9 @@ scale = Vector2(1, 2.48856)
 color = Color(0.117647, 0.454902, 0.447059, 1)
 polygon = PackedVector2Array(-502, 19.75, 649.25, 16.75, 651, 169.75, -502, 155.75)
 
+[node name="ResetTimer" type="Timer" parent="Parallax"]
+one_shot = true
+
 [node name="Food" type="Node2D" parent="."]
 position = Vector2(451, -215)
 
@@ -749,6 +850,8 @@ position = Vector2(967, 0)
 script = ExtResource("16_aedlb")
 
 [node name="EnemyStaticBody2D" type="StaticBody2D" parent="Enemy"]
+collision_layer = 9
+collision_mask = 9
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy/EnemyStaticBody2D"]
 scale = Vector2(4, 4)
@@ -776,8 +879,8 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -110.0
-offset_bottom = -110.0
+offset_top = -118.0
+offset_bottom = -118.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("14_587ap")
@@ -787,6 +890,34 @@ texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sfhw8")
 animation = &"0"
+
+[node name="Final Score Label" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Final" type="TileMapLayer" parent="GUI/Final Score Label"]
+texture_filter = 1
+position = Vector2(-500, -538)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 5, 0, 0, 0, 5, 0, 3, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 5, 0, 0, 0, 5, 0, 4, 0, 0, 0, 7, 0, 5, 0, 0, 0, 0, 0, 3, 0, 0, 0, 8, 0, 5, 0, 0, 0, 3, 0, 4, 0, 0, 0)
+tile_set = SubResource("TileSet_pl2e3")
+
+[node name="Score" type="TileMapLayer" parent="GUI/Final Score Label"]
+texture_filter = 1
+position = Vector2(-500, -529)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray(0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0)
+tile_set = SubResource("TileSet_pl2e3")
 
 [node name="ProgressionTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -805,5 +936,6 @@ position = Vector2(1, 578)
 [connection signal="score" from="Parallax/Player" to="." method="_on_player_score"]
 [connection signal="timeout" from="Parallax/Player/DeathTimer" to="Parallax/Player" method="_on_death_timer_timeout"]
 [connection signal="full_rotation" from="Parallax/Buildings 1" to="." method="_on_buildings_1_full_rotation"]
+[connection signal="timeout" from="Parallax/ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="animation_finished" from="Enemy/AnimationPlayer" to="Enemy" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="ProgressionTimer" to="." method="_on_progression_timer_timeout"]
