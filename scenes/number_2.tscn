@@ -257,7 +257,7 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_0wx18")
 animation = &"walk_right"
 autoplay = "walk_right"
-frame_progress = 0.601065
+frame_progress = 0.332556
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Parallax/Player"]
 position = Vector2(-4.5, -8)
