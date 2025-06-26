@@ -6,6 +6,7 @@ const Buildings = preload("res://scripts/buildings_2.gd")
 const Mountains = preload("res://scripts/mountains.gd")
 const Player = preload("res://scripts/player.gd")
 
+var speed: float
 var sky: Clouds
 var trees: Trees
 var buildings_1: Buildings
@@ -22,7 +23,8 @@ func _enter_tree() -> void:
 	player = find_child("Player")
 	set_speed(1.5)
 	
-func set_speed(speed: float = 1) -> void:
+func set_speed(given_speed: float = 1) -> void:
+	speed = given_speed
 	sky.speed = speed * 2
 	trees.speed = speed * 10
 	buildings_1.speed = speed * 30

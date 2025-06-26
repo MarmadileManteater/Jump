@@ -1,6 +1,7 @@
-[gd_scene load_steps=40 format=3 uid="uid://cwpqloipw12mc"]
+[gd_scene load_steps=41 format=3 uid="uid://cwpqloipw12mc"]
 
 [ext_resource type="Script" uid="uid://yftbga6pnld7" path="res://scripts/background.gd" id="1_0gq2e"]
+[ext_resource type="Script" uid="uid://b2f5hxbvnooll" path="res://scripts/number_2.gd" id="1_2cud2"]
 [ext_resource type="Texture2D" uid="uid://xjr5ob38f3nx" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/city/build1.png" id="1_4ujt7"]
 [ext_resource type="Texture2D" uid="uid://rehlyn0dwkp0" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/blue.png" id="1_ihjrc"]
 [ext_resource type="Texture2D" uid="uid://dj7s5el85ssmw" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/forest/threes_black.png" id="2_eh0x3"]
@@ -222,6 +223,7 @@ animations = [{
 
 [node name="Root" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_2cud2")
 
 [node name="Parallax" type="Node2D" parent="."]
 scale = Vector2(4, 4)
@@ -512,10 +514,10 @@ scale = Vector2(1, 2.48856)
 color = Color(0.117647, 0.454902, 0.447059, 1)
 polygon = PackedVector2Array(-502, 19.75, 649.25, 16.75, 651, 169.75, -502, 155.75)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Score" type="Control" parent="GUI"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -528,10 +530,15 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("14_587ap")
 
-[node name="Digit" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+[node name="Digit" type="AnimatedSprite2D" parent="GUI/Score"]
 texture_filter = 1
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_sfhw8")
 animation = &"0"
 
+[node name="ProgressionTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="dead" from="Parallax/Player" to="Parallax" method="_on_player_dead"]
+[connection signal="timeout" from="ProgressionTimer" to="." method="_on_progression_timer_timeout"]
