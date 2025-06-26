@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+var death_timer: Timer
 var sprite: AnimatedSprite2D
 var alive: bool = true
 var is_jumping: bool = false
@@ -14,6 +15,7 @@ func scale_speed(speed: float):
 
 func _enter_tree():
 	sprite = find_child("AnimatedSprite2D")
+	death_timer = find_child("DeathTimer")
 	scale_speed(speed_scale)
 
 func _input(event: InputEvent) -> void:
@@ -34,6 +36,11 @@ func _physics_process(delta: float) -> void:
 		emit_signal("score", 1)
 	if (will_return):
 		return
+	var enemies_collided_with = get_colliding_bodies().filter(func (body: StaticBody2D): return body.name.begins_with("Enemy"))
+	if (len(enemies_collided_with) != 0):
+		alive = false
+		emit_signal("dead")
+		death_timer.start()
 	if (len(get_colliding_bodies()) != 0 and !sprite.is_playing()):
 		sprite.animation = "walk_right"
 		sprite.play()
@@ -44,3 +51,9 @@ func _physics_process(delta: float) -> void:
 	if (position.y > 400):
 		emit_signal("dead")
 		alive = false
+		death_timer.start()
+
+
+func _on_death_timer_timeout() -> void:
+	collision_layer = 4
+	collision_mask = 4
