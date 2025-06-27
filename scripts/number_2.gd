@@ -8,28 +8,25 @@ var food_sprites = ["apple", "pizza", "ice cream", "bread", "soda"]
 var parallax: Background
 var score: MultiDigitNumber
 var final_score_label: Control
+var high_score_label: Node2D
 var food_spawners: Array = []
 var enemy_spawners: Array = []
 var foods: Array = []
 var food: Node2D
 var enemy: Node2D
 var rotated_times = 0
+signal final_score
+signal reload_scene
 
 func _enter_tree() -> void:
 	parallax = find_child("Parallax")
 	score = find_child("GUI").find_child("Score")
 	final_score_label = find_child("GUI").find_child("Final Score Label")
+	high_score_label = final_score_label.find_child("High Score Label Container")
 	food_spawners = find_children("FoodSpawner*")
 	enemy_spawners = find_children("EnemySpawner*")
 	food = find_child("Food")
 	enemy = find_child("Enemy")
-
-func _input(event: InputEvent) -> void:
-	if (final_score_label.visible):
-		if (event.is_action_pressed("ui_accept") 
-		or event is InputEventMouseButton
-		or event is InputEventScreenTouch):
-			get_tree().reload_current_scene()
 
 func _on_progression_timer_timeout() -> void:
 	if (parallax.player.alive):
@@ -74,3 +71,8 @@ func _on_reset_timer_timeout() -> void:
 	score.anchor_top = 0.5
 	score.position.y += 190
 	final_score_label.visible = true
+	emit_signal("final_score", score.number)
+
+
+func _on_high_score() -> void:
+	high_score_label.visible = true

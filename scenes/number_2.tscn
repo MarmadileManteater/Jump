@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cwpqloipw12mc"]
+[gd_scene load_steps=68 format=3 uid="uid://cwpqloipw12mc"]
 
 [ext_resource type="Script" uid="uid://yftbga6pnld7" path="res://scripts/background.gd" id="1_0gq2e"]
 [ext_resource type="Script" uid="uid://b2f5hxbvnooll" path="res://scripts/number_2.gd" id="1_2cud2"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://co5xhg7bopv8t" path="res://assets/spritesheets/food_items16x16.png" id="15_0wx18"]
 [ext_resource type="Script" uid="uid://ce4v6nsupe1gb" path="res://scripts/enemy.gd" id="16_aedlb"]
 [ext_resource type="Texture2D" uid="uid://bgy6u2cfr8puh" path="res://assets/spritesheets/Old enemies.png" id="18_3u3qx"]
+[ext_resource type="Script" uid="uid://bxols30di4jok" path="res://scripts/high_score_label.gd" id="23_pl2e3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wx18"]
 atlas = ExtResource("9_ctwnc")
@@ -794,25 +795,31 @@ position = Vector2(114.25, -57.75)
 position = Vector2(-100.25, -92.5)
 
 [node name="Mountains" type="Node2D" parent="Parallax"]
+z_index = 11
 script = ExtResource("10_iba6n")
 
 [node name="MountainsA" type="Sprite2D" parent="Parallax/Mountains"]
+z_index = 100
 position = Vector2(-285.75, 367.75)
 texture = ExtResource("4_o1edr")
 
 [node name="MountainsB" type="Sprite2D" parent="Parallax/Mountains"]
+z_index = 199
 position = Vector2(6.75, 367.75)
 texture = ExtResource("4_o1edr")
 
 [node name="MountainsC" type="Sprite2D" parent="Parallax/Mountains"]
+z_index = 100
 position = Vector2(298, 367.75)
 texture = ExtResource("4_o1edr")
 
 [node name="MountainsD" type="Sprite2D" parent="Parallax/Mountains"]
+z_index = 100
 position = Vector2(590.75, 367.75)
 texture = ExtResource("4_o1edr")
 
 [node name="Polygon2D" type="Polygon2D" parent="Parallax/Mountains"]
+z_index = 100
 position = Vector2(18.25, 401.567)
 scale = Vector2(1, 2.48856)
 color = Color(0.117647, 0.454902, 0.447059, 1)
@@ -892,6 +899,7 @@ sprite_frames = SubResource("SpriteFrames_sfhw8")
 animation = &"0"
 
 [node name="Final Score Label" type="Control" parent="GUI"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -916,8 +924,37 @@ tile_set = SubResource("TileSet_pl2e3")
 texture_filter = 1
 position = Vector2(-500, -529)
 scale = Vector2(5, 5)
-tile_map_data = PackedByteArray(0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_pl2e3")
+
+[node name="High Score Label Container" type="Node2D" parent="GUI/Final Score Label"]
+visible = false
+position = Vector2(2, 0)
+
+[node name="High Score Label" type="Node2D" parent="GUI/Final Score Label/High Score Label Container"]
+position = Vector2(-2, -76)
+script = ExtResource("23_pl2e3")
+
+[node name="high" type="TileMapLayer" parent="GUI/Final Score Label/High Score Label Container/High Score Label"]
+modulate = Color(1, 1, 0.25098, 1)
+texture_filter = 1
+position = Vector2(-461, -172)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 5, 0, 0, 0, 8, 0, 3, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 5, 0, 0, 0, 6, 0, 3, 0, 0, 0, 7, 0, 5, 0, 0, 0, 8, 0, 3, 0, 0, 0)
+tile_set = SubResource("TileSet_pl2e3")
+occlusion_enabled = false
+
+[node name="score" type="TileMapLayer" parent="GUI/Final Score Label/High Score Label Container/High Score Label"]
+modulate = Color(1, 1, 0.25098, 1)
+texture_filter = 1
+position = Vector2(-505, -153)
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0)
+tile_set = SubResource("TileSet_pl2e3")
+
+[node name="Timer" type="Timer" parent="GUI/Final Score Label/High Score Label Container/High Score Label"]
+wait_time = 0.75
+autostart = true
 
 [node name="ProgressionTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -938,4 +975,5 @@ position = Vector2(1, 578)
 [connection signal="full_rotation" from="Parallax/Buildings 1" to="." method="_on_buildings_1_full_rotation"]
 [connection signal="timeout" from="Parallax/ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="animation_finished" from="Enemy/AnimationPlayer" to="Enemy" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="GUI/Final Score Label/High Score Label Container/High Score Label/Timer" to="GUI/Final Score Label/High Score Label Container/High Score Label" method="_on_timer_timeout"]
 [connection signal="timeout" from="ProgressionTimer" to="." method="_on_progression_timer_timeout"]
