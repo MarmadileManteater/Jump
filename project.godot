@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Game 2"
+config/name="Jump!"
 run/main_scene="uid://dx6bl3lude2nf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
