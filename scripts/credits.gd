@@ -11,4 +11,4 @@ func _physics_process(delta: float) -> void:
 		for child in children:
 			child.position.y -= 2
 			if (child.position.y < -750):
-				child.position.y = 2035.0
+				child.position.y = 2655.0

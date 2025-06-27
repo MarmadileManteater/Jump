@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://u151hq8r0nns"]
+[gd_scene load_steps=27 format=4 uid="uid://u151hq8r0nns"]
 
 [ext_resource type="Texture2D" uid="uid://s2mvcqsi8bil" path="res://assets/spritesheets/BoxyBold - by Clint Bellanger/Repacked - double.png" id="1_0bpdh"]
 [ext_resource type="Script" uid="uid://dt3kv760b4lkj" path="res://scripts/hyperlink.gd" id="1_2ckv8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://co5xhg7bopv8t" path="res://assets/spritesheets/food_items16x16.png" id="5_8gwij"]
 [ext_resource type="Texture2D" uid="uid://cypcqj4fqn6ii" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/background/cloud.png" id="6_mah5v"]
 [ext_resource type="Texture2D" uid="uid://cct6u775yil07" path="res://assets/spritesheets/16Pixel - 2D Shooter Demo/forest/mountain2_recolon1.png" id="7_kyhnv"]
+[ext_resource type="Texture2D" uid="uid://bgy6u2cfr8puh" path="res://assets/spritesheets/Old enemies.png" id="8_7lgdl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ckv8"]
 texture = ExtResource("1_0bpdh")
@@ -146,6 +147,35 @@ texture = ExtResource("5_8gwij")
 
 [sub_resource type="TileSet" id="TileSet_kyhnv"]
 sources/0 = SubResource("TileSetAtlasSource_mah5v")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6kru"]
+atlas = ExtResource("8_7lgdl")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbfqv"]
+atlas = ExtResource("8_7lgdl")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5q3x"]
+atlas = ExtResource("8_7lgdl")
+region = Rect2(64, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmdnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6kru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbfqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5q3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ooihk"]
 texture = ExtResource("1_0bpdh")
@@ -295,7 +325,7 @@ position = Vector2(179, 459)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_ih6pn")
 autoplay = "default"
-frame_progress = 0.02032
+frame_progress = 0.350474
 
 [node name="building" type="Sprite2D" parent="Credits/2D Platformer Asset Pack"]
 texture_filter = 1
@@ -489,8 +519,82 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAQAAAABAAEAAAADAAQAAAAEAAEAAAAEAAMAAAAFAAEAAAAFAAQAAAAGAAEAAAACAAUAAAAHAAEAAAAEAAMAAAAIAAEAAAABAAIAAAADAAEAAAACAAMAAAAKAAEAAAACAAMAAAALAAEAAAACAAMAAAAMAAEAAAAGAAQAAAA=")
 tile_set = SubResource("TileSet_0ctdu")
 
+[node name="Platformer Baddies" type="Node2D" parent="Credits"]
+position = Vector2(0, 1966)
+
+[node name="Control" type="Control" parent="Credits/Platformer Baddies"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 37.0
+offset_top = 62.0
+offset_right = 677.0
+offset_bottom = 207.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_2ckv8")
+link = "https://opengameart.org/content/platformer-baddies"
+
+[node name="Line 1" type="TileMapLayer" parent="Credits/Platformer Baddies/Control"]
+texture_filter = 1
+position = Vector2(-66, -63)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAACAAEAAAADAAQAAAABAAEAAAAHAAQAAAAEAAEAAAADAAUAAAAGAAEAAAAGAAQAAAAHAAEAAAABAAUAAAAIAAEAAAAEAAQAAAAJAAEAAAAEAAMAAAAKAAEAAAABAAUAAAADAAEAAAAAAAMAAAAFAAEAAAAFAAMAAAA=")
+tile_set = SubResource("TileSet_0ctdu")
+
+[node name="Line 2" type="TileMapLayer" parent="Credits/Platformer Baddies/Control"]
+texture_filter = 1
+position = Vector2(-66, 9)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAACAAEAAAAAAAMAAAABAAEAAAABAAMAAAADAAEAAAADAAMAAAAEAAEAAAADAAMAAAAFAAEAAAAAAAQAAAAGAAEAAAAEAAMAAAAHAAEAAAACAAUAAAA=")
+tile_set = SubResource("TileSet_0ctdu")
+
+[node name="Control2" type="Control" parent="Credits/Platformer Baddies"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 37.0
+offset_top = 209.0
+offset_right = 746.0
+offset_bottom = 279.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_2ckv8")
+link = "https://opengameart.org/users/grafxkid"
+
+[node name="Line 1" type="TileMapLayer" parent="Credits/Platformer Baddies/Control2"]
+texture_filter = 1
+position = Vector2(-66, -63)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAACAAEAAAAIAAUAAAABAAEAAAABAAMAAAAEAAEAAAAGAAMAAAAFAAEAAAABAAUAAAAGAAEAAAAAAAMAAAAHAAEAAAAFAAMAAAAIAAEAAAAHAAUAAAAJAAEAAAACAAQAAAAKAAEAAAAAAAQAAAALAAEAAAADAAMAAAA=")
+tile_set = SubResource("TileSet_0ctdu")
+
+[node name="Control3" type="Control" parent="Credits/Platformer Baddies"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 37.0
+offset_top = 419.0
+offset_right = 815.0
+offset_bottom = 485.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+script = ExtResource("1_2ckv8")
+link = "http://creativecommons.org/publicdomain/zero/1.0/"
+
+[node name="Line 1" type="TileMapLayer" parent="Credits/Platformer Baddies/Control3"]
+texture_filter = 1
+position = Vector2(-66, -63)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAACAAEAAAAAAAQAAAABAAEAAAADAAQAAAAEAAEAAAAEAAMAAAAFAAEAAAAFAAQAAAAGAAEAAAACAAUAAAAHAAEAAAAEAAMAAAAIAAEAAAABAAIAAAADAAEAAAACAAMAAAAKAAEAAAACAAMAAAALAAEAAAACAAMAAAAMAAEAAAAGAAQAAAA=")
+tile_set = SubResource("TileSet_0ctdu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Credits/Platformer Baddies"]
+texture_filter = 1
+position = Vector2(96, 340)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_nmdnh")
+frame_progress = 0.67691
+
 [node name="SFXTitle" type="Node2D" parent="Credits"]
-position = Vector2(2, 1980)
+position = Vector2(2, 2557)
 
 [node name="Control4" type="Control" parent="Credits/SFXTitle"]
 layout_mode = 3
@@ -500,6 +604,7 @@ offset_top = 32.0
 offset_right = 682.0
 offset_bottom = 107.0
 mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Line 1" type="TileMapLayer" parent="Credits/SFXTitle/Control4"]
 texture_filter = 1
@@ -509,7 +614,7 @@ tile_map_data = PackedByteArray("AAAEAAEAAAAFAAMAAAAFAAEAAAAHAAUAAAADAAEAAAACAAU
 tile_set = SubResource("TileSet_0ctdu")
 
 [node name="8-Bit Platformer SFX" type="Node2D" parent="Credits"]
-position = Vector2(0, 2078)
+position = Vector2(0, 2655)
 
 [node name="Control" type="Control" parent="Credits/8-Bit Platformer SFX"]
 layout_mode = 3
@@ -635,6 +740,12 @@ texture_filter = 1
 position = Vector2(1691, 2053)
 scale = Vector2(4, 4)
 texture = ExtResource("7_kyhnv")
+
+[node name="Cover2" type="Polygon2D" parent="."]
+position = Vector2(-3, 1167)
+scale = Vector2(1, 0.750929)
+color = Color(0.117647, 0.454902, 0.447059, 1)
+polygon = PackedVector2Array(-83, 1749, -94, 2542, 1024, 2531, 1023, 1542.09, 556, 1571.39, 314, 1567.39, 16, 1546.09)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
