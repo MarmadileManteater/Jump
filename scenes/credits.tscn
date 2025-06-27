@@ -591,7 +591,7 @@ texture_filter = 1
 position = Vector2(96, 340)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_nmdnh")
-frame_progress = 0.135498
+frame_progress = 0.374605
 
 [node name="SFXTitle" type="Node2D" parent="Credits"]
 position = Vector2(2, 2557)

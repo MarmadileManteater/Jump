@@ -14,19 +14,22 @@ var enemy_spawners: Array = []
 var foods: Array = []
 var food: Node2D
 var enemy: Node2D
+var gui: CanvasLayer
 var rotated_times = 0
 signal final_score
 signal reload_scene
 
 func _enter_tree() -> void:
 	parallax = find_child("Parallax")
-	score = find_child("GUI").find_child("Score")
-	final_score_label = find_child("GUI").find_child("Final Score Label")
+	gui = find_child("GUI")
+	score = gui.find_child("Score")
+	final_score_label = gui.find_child("Final Score Label")
 	high_score_label = final_score_label.find_child("High Score Label Container")
 	food_spawners = find_children("FoodSpawner*")
 	enemy_spawners = find_children("EnemySpawner*")
 	food = find_child("Food")
 	enemy = find_child("Enemy")
+	
 
 func _on_progression_timer_timeout() -> void:
 	if (parallax.player.alive):
