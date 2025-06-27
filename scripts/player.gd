@@ -8,6 +8,7 @@ var alive: bool = true
 var is_jumping: bool = false
 var speed_scale: float = 1
 var jump_height: float
+var muted: bool = false
 signal dead
 signal score
 
@@ -32,7 +33,8 @@ func _input(event: InputEvent) -> void:
 				is_jumping = true
 				apply_central_force(Vector2(0, (-18 * 2600) * jump_height))
 				sprite.animation = "jump_right"
-				jump_sound_effect.play()
+				if (!muted):
+					jump_sound_effect.play()
 
 func _physics_process(delta: float) -> void:
 	var food_collided_with = get_colliding_bodies().filter(func (body: StaticBody2D): return body.name.begins_with("Food"))
@@ -40,7 +42,8 @@ func _physics_process(delta: float) -> void:
 	while (len(food_collided_with) != 0):
 		food_collided_with.pop_front().queue_free()
 		emit_signal("score", 1)
-		food_sound_effect.play()
+		if (!muted):
+			food_sound_effect.play()
 	if (will_return):
 		return
 	var enemies_collided_with = get_colliding_bodies().filter(func (body: StaticBody2D): return body.name.begins_with("Enemy"))

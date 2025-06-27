@@ -11,6 +11,9 @@ var title_card: CanvasLayer
 var credits: CanvasLayer
 var credits_card: CanvasLayer
 var canvas_layer: CanvasLayer
+var muted: bool = false
+var mute: TileMapLayer
+var unmute: TileMapLayer
 
 func _enter_tree() -> void:
 	root = find_child("Root")
@@ -19,6 +22,9 @@ func _enter_tree() -> void:
 	canvas_layer = find_child("CanvasLayer")
 	root.process_mode = Node.PROCESS_MODE_DISABLED
 	root.find_child("GUI").find_child("Score").visible = false
+	var volume_control = find_child("Volume Toggle").find_child("Control")
+	mute = volume_control.find_child("MUTE")
+	unmute = volume_control.find_child("UNMUTE")
 
 func _on_final_score(given_score) -> void:
 	for i in range(0, len(scores)):
@@ -80,3 +86,14 @@ func _on_touch_input(event: InputEvent) -> void:
 		or event is InputEventScreenTouch):
 			if (event.is_pressed()):
 				_on_reload_scene()
+
+
+func _on_mute_gui_input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton or
+ 		event is InputEventScreenTouch):
+			if (event.is_pressed()):
+				muted = !muted
+				mute.visible = !muted
+				unmute.visible = muted
+				root.parallax.set_muted(muted)
+				

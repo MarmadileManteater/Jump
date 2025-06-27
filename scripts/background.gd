@@ -15,7 +15,12 @@ var mountains: Mountains
 var player: Player
 var death_sound_effect: AudioStreamPlayer2D
 var reset_timer: Timer
+var muted: bool = false
 
+func set_muted(given_value):
+	muted = given_value
+	player.muted = given_value
+	
 func _enter_tree() -> void:
 	sky = find_child("Sky")
 	trees = find_child("Trees")
@@ -42,6 +47,7 @@ func set_speed(given_speed: float = 1) -> void:
 
 func _on_player_dead() -> void:
 	set_speed(0)
-	death_sound_effect.play()
+	if (!muted):
+		death_sound_effect.play()
 	reset_timer.start()
 	
