@@ -14,6 +14,7 @@ var canvas_layer: CanvasLayer
 var muted: bool = false
 var mute: TileMapLayer
 var unmute: TileMapLayer
+var volume_control: Control
 
 func _enter_tree() -> void:
 	root = find_child("Root")
@@ -22,7 +23,7 @@ func _enter_tree() -> void:
 	canvas_layer = find_child("CanvasLayer")
 	root.process_mode = Node.PROCESS_MODE_DISABLED
 	root.find_child("GUI").find_child("Score").visible = false
-	var volume_control = find_child("Volume Toggle").find_child("Control")
+	volume_control = find_child("Volume Toggle").find_child("Control")
 	mute = volume_control.find_child("MUTE")
 	unmute = volume_control.find_child("UNMUTE")
 
@@ -36,10 +37,12 @@ func _on_final_score(given_score) -> void:
 		scores.pop_back()
 	title_card.visible = true
 	credits.visible = true
+	volume_control.visible = true
 
 func _on_reload_scene() -> void:
 	title_card.visible = false
 	credits.visible = false
+	volume_control.visible = false
 	root.queue_free()
 	var new_root = root_scene.instantiate()
 	new_root.connect("final_score", _on_final_score)
@@ -69,6 +72,7 @@ func exit_credits():
 	credits.visible = true
 	root.visible = true
 	canvas_layer.visible = true
+	volume_control.visible = true
 
 func _on_touch_input(event: InputEvent) -> void:
 	if (root.process_mode == Node.PROCESS_MODE_DISABLED):
@@ -80,6 +84,7 @@ func _on_touch_input(event: InputEvent) -> void:
 				root.find_child("GUI").find_child("Score").visible = true
 				title_card.visible = false
 				credits.visible = false
+				volume_control.visible = false
 	if (root.final_score_label.visible):
 		if (event.is_action_pressed("ui_accept") 
 		or event is InputEventMouseButton

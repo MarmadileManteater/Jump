@@ -278,14 +278,15 @@ layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -399.0
+offset_left = -393.0
 offset_top = 14.0
 offset_right = -10.0
-offset_bottom = 77.0
+offset_bottom = 118.0
 grow_horizontal = 0
 
 [node name="MUTE" type="TileMapLayer" parent="Volume Toggle/Control"]
 texture_filter = 1
+position = Vector2(63, -4)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAABAAAAAAAEAAQAAAACAAAAAAAEAAUAAAADAAAAAAADAAUAAAAEAAAAAAAEAAMAAAA=")
 tile_set = SubResource("TileSet_p4r1t")
@@ -293,7 +294,7 @@ tile_set = SubResource("TileSet_p4r1t")
 [node name="UNMUTE" type="TileMapLayer" parent="Volume Toggle/Control"]
 visible = false
 texture_filter = 1
-position = Vector2(2, 0)
+position = Vector2(-1, -4)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAABAAAAAAAFAAQAAAACAAAAAAAEAAQAAAADAAAAAAAEAAUAAAAEAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAFAAAAAAAEAAMAAAA=")
 tile_set = SubResource("TileSet_p4r1t")
