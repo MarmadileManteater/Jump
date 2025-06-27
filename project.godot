@@ -13,6 +13,8 @@ config_version=5
 config/name="Jump!"
 run/main_scene="uid://dx6bl3lude2nf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/use_filter=false
+boot_splash/image="uid://b48r4ma47mu81"
 config/icon="res://icon.svg"
 
 [display]

@@ -89,6 +89,13 @@ func exit_credits():
 	canvas_layer.visible = true
 	volume_control.visible = true
 
+func _input(event: InputEvent) -> void:
+	if (event.is_action_pressed("ui_accept")):
+		var event_action = InputEventAction.new()
+		event_action.action = "ui_accept"
+		event_action.pressed = true
+		_on_touch_input(event_action)
+
 func _on_touch_input(event: InputEvent) -> void:
 	if (high_scores_layer.visible):
 		#ignore input
