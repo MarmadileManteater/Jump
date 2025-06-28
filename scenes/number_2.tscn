@@ -908,14 +908,14 @@ grow_vertical = 2
 
 [node name="Final" type="TileMapLayer" parent="GUI/Final Score Label"]
 texture_filter = 1
-position = Vector2(-500, -538)
+position = Vector2(-567, -538)
 scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 4, 0, 5, 0, 0, 0, 5, 0, 3, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 5, 0, 0, 0, 5, 0, 4, 0, 0, 0, 7, 0, 5, 0, 0, 0, 0, 0, 3, 0, 0, 0, 8, 0, 5, 0, 0, 0, 3, 0, 4, 0, 0, 0)
 tile_set = SubResource("TileSet_pl2e3")
 
 [node name="Score" type="TileMapLayer" parent="GUI/Final Score Label"]
 texture_filter = 1
-position = Vector2(-500, -529)
+position = Vector2(-567, -529)
 scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_pl2e3")
@@ -931,7 +931,7 @@ script = ExtResource("23_pl2e3")
 [node name="high" type="TileMapLayer" parent="GUI/Final Score Label/High Score Label Container/High Score Label"]
 modulate = Color(1, 1, 0.25098, 1)
 texture_filter = 1
-position = Vector2(-461, -172)
+position = Vector2(-528, -172)
 scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 4, 0, 5, 0, 0, 0, 8, 0, 3, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 4, 0, 0, 0, 6, 0, 5, 0, 0, 0, 6, 0, 3, 0, 0, 0, 7, 0, 5, 0, 0, 0, 8, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_pl2e3")
@@ -940,7 +940,7 @@ occlusion_enabled = false
 [node name="score" type="TileMapLayer" parent="GUI/Final Score Label/High Score Label Container/High Score Label"]
 modulate = Color(1, 1, 0.25098, 1)
 texture_filter = 1
-position = Vector2(-505, -153)
+position = Vector2(-563, -153)
 scale = Vector2(5, 5)
 tile_map_data = PackedByteArray(0, 0, 4, 0, 6, 0, 0, 0, 2, 0, 5, 0, 0, 0, 5, 0, 6, 0, 0, 0, 2, 0, 3, 0, 0, 0, 6, 0, 6, 0, 0, 0, 6, 0, 4, 0, 0, 0, 7, 0, 6, 0, 0, 0, 1, 0, 5, 0, 0, 0, 8, 0, 6, 0, 0, 0, 4, 0, 3, 0, 0, 0)
 tile_set = SubResource("TileSet_pl2e3")
